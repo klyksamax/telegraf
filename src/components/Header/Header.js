@@ -9,7 +9,8 @@ const Header = observer(({ appStore }) => {
     return (
         <div className="header__container">
             <h2>Project Telegraf</h2>
-            <p onClick={closeModul}>Выйти</p>
+            {!appStore.openPopup ? <p onClick={closeModul}>Выйти</p> : null}
+            
         </div>
     );
 });

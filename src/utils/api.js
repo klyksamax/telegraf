@@ -110,6 +110,7 @@ class Api {
     }
 
     getAccount(args) {
+        console.log("dddd")
         const url = this.backendUrl + `getAccountInfo?access_token=${args.body}`;
         const body = {
             method: "GET",
@@ -123,7 +124,6 @@ class Api {
 
     editAccountInfo(args) {
         const url = this.backendUrl + `editAccountInfo?access_token=${args.body.token}&short_name=${args.body.profole.short_name}&author_name=${args.body.profole.author_name}&author_url=${args.body.profole.author_url}`;
-        console.log(args.body.profole.author_url)
         const body = {
             method: "POST",
         };

@@ -6,13 +6,13 @@ import Content from './components/Content/Content';
 import Header from './components/Header/Header';
 import { api } from './utils/api';
 import { appStore } from './store/AppStore';
-import { apiAuth } from './utils/apiAuth';
 import LoginPage from './components/LoginPage/LoginPage';
 const AppContext = createContext(appStore);
 
 const App = observer(() => {
 
   useEffect(() => {
+    console.log(localStorage.getItem("userTelegraf"))
     api.getAccount({
       body:  localStorage.getItem("userTelegraf"),
       resolveCallback: (data) => {
@@ -24,20 +24,23 @@ const App = observer(() => {
         }
       },
     });
-  }, [appStore.auth]);
+  }, [appStore.token]);
+
 
   return (
     <AppContext.Provider value={""}>
       <div className="App">
-      <LoginPage appStore={appStore}/>
+      
         <header>
           <Header appStore={appStore} />
         </header>
         <main>
           <Routes>
-            {appStore.token ? <Route
+            <Route
               path='/'
-              element={<Content appStore={appStore} />} /> : null}
+              element={appStore.token 
+              ? <Content appStore={appStore} /> 
+              : <LoginPage appStore={appStore}/>} /> 
           </Routes>
         </main>
       </div>

@@ -38,7 +38,6 @@ const CollectionPages = observer(({ appStore }) => {
       const handleApply = () => {
        appStore.onApplyPage();
        setOpenPage(false)
-       // appStore.setOpenPopup(false);
       };
     
       const handleClear = () => {
@@ -49,12 +48,12 @@ const CollectionPages = observer(({ appStore }) => {
         <div className="collection-pages_container">
             <div className="collection-pages_btn">
                 <div 
-                className="pages_btn" 
+                className="pages__btn" 
                 onClick={(e)=>{setOpenPage(true)}}>
                     Добавить страницу
                     </div>
             </div>
-            <div className="collection-pages_">
+            <div className="collection-pages__list">
                 <PopupModal
                     visible={openPage}
                     onClose={closeModdal}
@@ -79,12 +78,6 @@ const CollectionPages = observer(({ appStore }) => {
                             onClick={handleApply}
                         >
                             Применить
-                        </button>
-                        <button
-                            className="popup__modal-footer-button_red"
-                            onClick={handleClear}
-                        >
-                            Очистить
                         </button>
                         </>
                 }

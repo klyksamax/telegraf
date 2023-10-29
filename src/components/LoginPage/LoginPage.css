@@ -5,7 +5,8 @@
 .login-page__btn{
     display: flex;
     cursor: pointer;
-    width: 60px;
+    width: auto;
+    padding: 5px;
     height: 45px;
     align-items: center;
     justify-content: center;

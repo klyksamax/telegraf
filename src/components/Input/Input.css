@@ -4,11 +4,11 @@
     gap: 20px;
     position: relative;
     flex-direction: column;
-    
+    align-items: flex-start;
   }
 
 .form-control__input{
-    width: 60%;
+    width: 100%;
     height: 30px;
     border: 1px solid #0000004a;
     border-radius: 5px;

@@ -1,7 +1,6 @@
 .card-page__block{
     display: flex;
     flex-direction: column;
-    min-height: 100px;
     align-items: flex-start;
     width: 300px;
     border: 2px solid #b5b5b5;

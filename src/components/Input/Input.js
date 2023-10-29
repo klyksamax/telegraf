@@ -32,10 +32,8 @@ const Input = observer(({element, onChangeInput }) => {
                 spellCheck="true"
             />
             {/* <span className="form-control__field-error">
-          {isRequired && value === "" && errorOnSave
-            ? "Обязательное поле"
-            : errorsFieldText}
-        </span> */}
+          
+            </span> */}
         </label>
     );
 });

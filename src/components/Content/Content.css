@@ -1,12 +1,12 @@
 .content__container{
     display: grid;
     grid-template-columns: 1fr 5px 1fr;
-    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 50px 0px;
 }
 
 .collection-pages__container{
     display: flex;
-    height: 700px;
+    height: auto;
     align-items: flex-start;
     justify-content: center;
     margin: 80px 0px 0px 0px;

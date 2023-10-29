@@ -1,7 +1,7 @@
 import { makeAutoObservable } from "mobx";
 import { api } from "../utils/api";
 import { getContet, getObjectRegister } from "../utils/basic";
-import { loginInput, pageInput } from "../components/const";
+import { inputRegister, loginInput, pageInput } from "../components/const";
 
 
 export default class AppStore {
@@ -18,20 +18,8 @@ export default class AppStore {
 
     constructor() {
         makeAutoObservable(this);
-        this.inputRegister = [
-            {
-                id: "short_name",
-                title: "Введите свое имя",
-                value: ""
-            },
-            {
-                id: "author_name",
-                title: "Введите свое полное имя",
-                value: ""
-            },
-        ];
+        this.inputRegister = inputRegister;
         this.inputPage = pageInput
-
         this.inputLogin = loginInput;
     }
 

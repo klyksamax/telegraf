@@ -1,5 +1,4 @@
 import { observer } from "mobx-react-lite";
-import { registration } from "../const";
 import Input from "../Input/Input";
 
 
