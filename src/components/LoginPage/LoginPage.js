@@ -11,7 +11,7 @@ const LoginPage = observer(({appStore, handleAuth }) => {
     const [loginPage, setLoginPage] = useState(<></>)
 
     useEffect(()=>{
-        if(visible){
+        if(!visible){
             setLoginPage(
                 <Аuthorization appStore = {appStore}/>
             )
@@ -23,7 +23,7 @@ const LoginPage = observer(({appStore, handleAuth }) => {
     }, [visible, appStore.auth])
 
   const handleApply = () => {
-    if(visible){
+    if(!visible){
       appStore.onApplyLogin();
     } else {
       appStore.onApplyRegister();
@@ -40,14 +40,14 @@ const LoginPage = observer(({appStore, handleAuth }) => {
       visible={appStore.openPopup}
       handleApply={handleApply}
       onClose={onClose}
-      title={visible ? ["Окно авторизации"] : ["Окно регистрации"]}
+      title={!visible ? ["Окно авторизации"] : ["Окно регистрации"]}
       size={"popup_md"}
       titleContent={
       <div 
       className="login-page__btn"
       onClick={(e)=>{setVisible(!visible)}}
       >
-        {visible ? <>Регистрация</> : <>Войти</>}
+        {!visible ? <>Регистрация</> : <>Войти</>}
         </div>
     }
       content={loginPage}

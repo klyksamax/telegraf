@@ -11,6 +11,8 @@
     align-items: center;
     justify-content: center;
     border-radius: 20px;
+    background-color: #000000;
+    color: white;
 }
 
 .login-page__btn:hover{
