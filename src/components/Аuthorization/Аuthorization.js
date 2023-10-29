@@ -5,20 +5,27 @@ import Input from "../Input/Input";
 
 
 
-const Аuthorization = observer(({ handleAuth }) => {
+const Аuthorization = observer(({ appStore }) => {
 
-    const [inputValue, setInputText] = useState("")
-
-    function onChange(e) {
-        const value = e.target.value
-        setInputText(value)
-    }
+    const onChangeInput = (element) =>{
+        appStore.inputLogin.reduce((acc, el) => {
+                 if (el.id === element.id) {
+                     appStore.setInputLogin([...acc, { ...element }])
+                   return [...acc, { ...element }];
+                 }
+                     appStore.setInputLogin([...acc, el])
+                   return [...acc, el];
+               }, []);
+         }
 
     return (
         <div className="authorization__container">
-            {login.map((el, i) => {
-                    
-                    return <Input key={i} element={el} />
+           {appStore.inputLogin.map((el, i) => {         
+                    return <Input 
+                    key={i} 
+                    element={el} 
+                    onChangeInput={onChangeInput}
+                    />
                 })}
         </div>
     );

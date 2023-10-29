@@ -53,6 +53,14 @@ export const registration = [
     },
 ]
 
+export const loginInput = [
+    {
+        id: "token",
+        title: "Введите свой token",
+        value: ""
+    },
+]
+
 export const pageInput = [
     {
         id: "title",

@@ -9,7 +9,7 @@ export const getListInputProfile = (appStore) => {
             value: appStore.profile[key]
         })     
       }
-   appStore.setInputProfile(arr)
+   //appStore.setInputProfile(arr)
     return arr
 
 }

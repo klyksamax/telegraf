@@ -1,18 +1,20 @@
 import { makeAutoObservable } from "mobx";
 import { api } from "../utils/api";
 import { getContet, getObjectRegister } from "../utils/basic";
-import { pageInput } from "../components/const";
+import { loginInput, pageInput } from "../components/const";
 
 
 export default class AppStore {
     id = "";
-    inputRegister = []
-    inputProfile = []
-    inputPage = []
-    pageList = {}
-    token = ""
-    openPopup = true
-    profile = []
+    auth = false;
+    inputRegister = [];
+    inputLogin = [];
+    inputProfile = [];
+    inputPage = [];
+    pageList = {};
+    token = "";
+    openPopup = true;
+    profile = [];
 
     constructor() {
         makeAutoObservable(this);
@@ -29,10 +31,20 @@ export default class AppStore {
             },
         ];
         this.inputPage = pageInput
+
+        this.inputLogin = loginInput;
     }
 
     setId(id) {
         this.id = id
+    }
+
+    setAuth(auth){
+        this.auth = auth
+    }
+
+    setInputLogin(inputLogin){
+        this.inputLogin = inputLogin
     }
 
     setInputRegister(inputRegister){
@@ -67,24 +79,41 @@ export default class AppStore {
         this.pageList = pageList
     }
 
-    onApplyPopup(){
-        api.getToken({
-            body: getObjectRegister(this.inputRegister),
+    onApplyLogin(){
+        api.getAccount({
+            body: getObjectRegister(this.inputLogin).token,
             resolveCallback: (data) => {
-                if(data.result?.access_token){
-                    localStorage.setItem("userTelegraf", data.result.access_token);
-                    this.setToken(data.result.access_token)
-                    api.getAccount({
-                        body: data.result.access_token,
-                        resolveCallback: (data) => {
-                            this.setProfile(data.result)
-                            this.setOpenPopup(false)
-                        }
-                    })
+                if(data.ok){
+                    localStorage.setItem("userTelegraf", getObjectRegister(this.inputLogin).token);
+                    this.setToken(getObjectRegister(this.inputLogin).token)
+                    this.setProfile(data.result)
+                    this.setOpenPopup(false)
+                    this.setInputToken(data.result)
+                    this.setAuth(true)
                 }
-                this.setInputToken(data.result)
             },
         });
+}
+
+    onApplyRegister(){
+            api.getToken({
+                body: getObjectRegister(this.inputRegister),
+                resolveCallback: (data) => {
+                    if(data.result?.access_token){
+                        localStorage.setItem("userTelegraf", data.result.access_token);
+                        this.setToken(data.result.access_token)
+                        api.getAccount({
+                            body: data.result.access_token,
+                            resolveCallback: (data) => {
+                                this.setProfile(data.result)
+                                this.setOpenPopup(false)
+                                this.setAuth(true)
+                            }
+                        })
+                    }
+                    this.setInputToken(data.result)
+                },
+            });
     }
 
     onApplyPage(){
@@ -99,6 +128,13 @@ export default class AppStore {
                 this.setPageList(data.result)
             }
         })
+    }
+
+
+    closeModul(){
+        this.setOpenPopup(true)
+        this.token = ""
+        localStorage.removeItem("userTelegraf");
     }
 
 }

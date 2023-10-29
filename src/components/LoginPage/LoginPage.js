@@ -16,14 +16,14 @@ const LoginPage = observer(({appStore, handleAuth }) => {
     useEffect(()=>{
         if(visible){
             setLoginPage(
-                <Аuthorization/>
+                <Аuthorization appStore = {appStore}/>
             )
         } else {
             setLoginPage(
                 <Registration appStore = {appStore}/>
             )
         }
-    }, [])
+    }, [visible, appStore.auth])
 
   const closeModdal = () => {
     // gridStore.hideFilterPopup();
@@ -31,20 +31,18 @@ const LoginPage = observer(({appStore, handleAuth }) => {
   };
 
   const handleApply = () => {
-    appStore.onApplyPopup();
+    if(visible){
+      appStore.onApplyLogin();
+    } else {
+      appStore.onApplyRegister();
+    }
+    
    // appStore.setOpenPopup(false);
   };
 
   const handleClear = () => {
     // gridStore.clearFilters();
   };
-    // useEffect(()=>{
-    //     if(){
-
-    //     } else {
-
-    //     }
-    // },[])
 
   
     return (
@@ -53,8 +51,14 @@ const LoginPage = observer(({appStore, handleAuth }) => {
       onClose={closeModdal}
       handleApply={handleApply}
       title={visible ? ["Окно авторизации"] : ["Окно регистрации"]}
-      isCloseIconVisible={true}
-      titleContent={""}
+      titleContent={
+      <div 
+      className="login-page__btn"
+      onClick={(e)=>{setVisible(!visible)}}
+      >
+        Войти
+        </div>
+    }
       content={loginPage}
       footer={
         <>

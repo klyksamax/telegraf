@@ -16,7 +16,6 @@ class Api {
     }
 
     _fetchData(url, requestBody, args, resultType = ResultType.JSON) {
-        // console.log(url)
         return fetch(url, requestBody)
             .then((response) => {
                 
@@ -124,6 +123,7 @@ class Api {
 
     editAccountInfo(args) {
         const url = this.backendUrl + `editAccountInfo?access_token=${args.body.token}&short_name=${args.body.profole.short_name}&author_name=${args.body.profole.author_name}&author_url=${args.body.profole.author_url}`;
+        console.log(args.body.profole.author_url)
         const body = {
             method: "POST",
         };

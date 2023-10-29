@@ -4,7 +4,7 @@ import Input from "../Input/Input";
 
 
 
-const Registration = observer(({appStore, handleAuth }) => {
+const Registration = observer(({appStore }) => {
 
     const onChangeInput = (element) =>{
    appStore.inputRegister.reduce((acc, el) => {

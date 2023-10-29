@@ -42,13 +42,12 @@
   
   .popup__modal-header_content {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-direction: column;
-    align-items: center;
   }
   
   .popup__modal-header {
-    padding: 10px 0px 0px 20px;
+    padding: 10px 20px 0px 20px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

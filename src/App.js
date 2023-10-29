@@ -20,17 +20,18 @@ const App = observer(() => {
           appStore.setProfile(data.result)
           appStore.setToken(localStorage.getItem("userTelegraf"))
           appStore.setOpenPopup(false)
+          appStore.setAuth(true)
         }
       },
     });
-  }, []);
+  }, [appStore.auth]);
 
   return (
     <AppContext.Provider value={""}>
       <div className="App">
       <LoginPage appStore={appStore}/>
         <header>
-          <Header appStore={""} />
+          <Header appStore={appStore} />
         </header>
         <main>
           <Routes>

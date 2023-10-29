@@ -5,4 +5,11 @@
     justify-content: center;
     background-color: black;
     color: antiquewhite;
+    position: relative;
+}
+
+.header__container p {
+    position: absolute;
+    right: 20px;
+    cursor: pointer;
 }

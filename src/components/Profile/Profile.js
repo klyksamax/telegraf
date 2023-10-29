@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 import { getListInputProfile, getObjectRegister } from "../../utils/basic";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import ButtonIcon from "../ButtonIcon/ButtonIcon";
 import { api } from "../../utils/api";
 import Input from "../Input/Input";
@@ -8,8 +8,9 @@ import Input from "../Input/Input";
 const Profile = observer(({ appStore }) => {
 
     useEffect(() => {
+        appStore.setInputProfile(getListInputProfile(appStore))
         getListInputProfile(appStore)
-    }, [appStore])
+    }, [appStore.profile])
 
     const onChangeInput = (element) =>{
         appStore.inputProfile.reduce((acc, el) => {
@@ -29,7 +30,9 @@ const Profile = observer(({ appStore }) => {
                 token: appStore.token
             },
             resolveCallback: (data) => {
-                appStore.setProfile(data.result)
+                if(data.ok){
+                    appStore.setProfile(data.result)
+                }
             }
         })
     }
