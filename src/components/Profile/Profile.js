@@ -10,7 +10,6 @@ const Profile = observer(({ appStore }) => {
     const [okEdit, setOkEdit] = useState(false)
 
     useEffect(() => {
-        appStore.setInputProfile(getListInputProfile(appStore))
         getListInputProfile(appStore)
     }, [appStore.profile, appStore.openPopup])
 
@@ -46,7 +45,7 @@ const Profile = observer(({ appStore }) => {
     return (
         <div className="profile__block">
             <div className="profile__block-input">
-                {appStore.inputProfile.map((el, i) => {
+                {getListInputProfile(appStore).map((el, i) => {
                     return <Input
                     key={i} 
                     element={el} 

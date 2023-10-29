@@ -12,25 +12,22 @@ const AppContext = createContext(appStore);
 const App = observer(() => {
 
   useEffect(() => {
-    console.log(localStorage.getItem("userTelegraf"))
     api.getAccount({
       body:  localStorage.getItem("userTelegraf"),
       resolveCallback: (data) => {
         if(data.ok){
-          appStore.setProfile(data.result)
+          appStore.setProfile(data.result) 
           appStore.setToken(localStorage.getItem("userTelegraf"))
           appStore.setOpenPopup(false)
           appStore.setAuth(true)
         }
       },
     });
-  }, [appStore.token]);
-
+  }, []);
 
   return (
     <AppContext.Provider value={""}>
       <div className="App">
-      
         <header>
           <Header appStore={appStore} />
         </header>
@@ -46,8 +43,6 @@ const App = observer(() => {
       </div>
     </AppContext.Provider>
   );
-
-
 })
 
 export default App;

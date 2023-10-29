@@ -110,7 +110,6 @@ class Api {
     }
 
     getAccount(args) {
-        console.log("dddd")
         const url = this.backendUrl + `getAccountInfo?access_token=${args.body}`;
         const body = {
             method: "GET",

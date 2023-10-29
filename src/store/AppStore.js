@@ -123,8 +123,12 @@ export default class AppStore {
         this.setOpenPopup(true)
         this.token = ""
         localStorage.removeItem("userTelegraf");
+        this.profile=[]
+        this.inputRegister = inputRegister;
+        this.inputPage = pageInput
+        this.inputLogin = loginInput;
+        this.auth = false
     }
-
 }
 
 const appStore = new AppStore();
