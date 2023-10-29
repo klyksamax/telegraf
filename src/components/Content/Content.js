@@ -7,7 +7,7 @@ const Content = observer(({ appStore }) => {
     return (
         <div className="content__container">
             <div className="collection-pages__container">
-                <CollectionPages />
+                <CollectionPages appStore={appStore}/>
             </div>
             <div className="content-separator"></div>
             <div className="profile__containe">

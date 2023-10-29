@@ -129,6 +129,26 @@ class Api {
         };
         return this._fetchData(url, body, args);
     }
+
+    getPageList(args) {
+        const url = this.backendUrl + `getPageList?access_token=${args.body}`;
+        const body = {
+            method: "GET",
+        };
+        return this._fetchData(url, body, args);
+    }
+
+    createPage(args) {
+        const url = this.backendUrl + `createPage?access_token=${args.body.token}&
+        title=${args.body.body.title}&
+        author_name=${args.body.body.author_name}&
+        content=${args.body.content}&
+        return_content=${args.body.return}`;
+        const body = {
+            method: "POST",
+        };
+        return this._fetchData(url, body, args);
+    }
 }
 
 const api = new Api({

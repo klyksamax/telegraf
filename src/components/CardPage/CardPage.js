@@ -12,7 +12,7 @@ const CardPage = observer(({ element }) => {
                 {element.description}
             </p>
             <p className="card-page__block-date">
-                {element.date}
+               Автор {element.author_name}
             </p>
         </div>
     );

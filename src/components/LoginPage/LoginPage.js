@@ -73,7 +73,6 @@ const LoginPage = observer(({appStore, handleAuth }) => {
         </>
       }
     />
-   
     );
 });
 

@@ -37,3 +37,13 @@ export function getObjectRegister(arr) {
       );
       return obj
 }
+
+export function getContet (content) {
+    const newContent = [
+        {
+            tag: "p",
+            children: [content]
+        }
+    ]
+    return JSON.stringify(newContent)
+}

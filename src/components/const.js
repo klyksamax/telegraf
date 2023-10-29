@@ -52,3 +52,21 @@ export const registration = [
         value: ""
     },
 ]
+
+export const pageInput = [
+    {
+        id: "title",
+        title: "Заголовок",
+        value: ""
+    },
+    {
+        id: "author_name",
+        title: "Имя автора",
+        value: ""
+    },
+    {
+        id: "content",
+        title: "Основной текст",
+        value: ""
+    },
+]

@@ -7,8 +7,9 @@
 .collection-pages__container{
     display: flex;
     height: 700px;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
+    margin: 80px 0px 0px 0px;
 }
 
 .profile__containe{

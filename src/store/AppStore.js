@@ -1,12 +1,15 @@
 import { makeAutoObservable } from "mobx";
 import { api } from "../utils/api";
-import { getObjectRegister } from "../utils/basic";
+import { getContet, getObjectRegister } from "../utils/basic";
+import { pageInput } from "../components/const";
 
 
 export default class AppStore {
     id = "";
     inputRegister = []
     inputProfile = []
+    inputPage = []
+    pageList = {}
     token = ""
     openPopup = true
     profile = []
@@ -25,6 +28,7 @@ export default class AppStore {
                 value: ""
             },
         ];
+        this.inputPage = pageInput
     }
 
     setId(id) {
@@ -37,6 +41,10 @@ export default class AppStore {
 
     setInputProfile(inputProfile){
         this.inputProfile = inputProfile
+    }
+
+    setInputPage(inputPage){
+        this.inputPage = inputPage
     }
 
     setInputToken(inpuToken){
@@ -53,6 +61,10 @@ export default class AppStore {
 
     setToken(token){
         this.token = token
+    }
+
+    setPageList(pageList){
+        this.pageList = pageList
     }
 
     onApplyPopup(){
@@ -73,6 +85,20 @@ export default class AppStore {
                 this.setInputToken(data.result)
             },
         });
+    }
+
+    onApplyPage(){
+        api.createPage({
+            body: {
+                body: getObjectRegister(this.inputPage),
+                content: getContet(getObjectRegister(this.inputPage).content),
+                token: this.token,
+                return: true
+            },
+            resolveCallback: (data) => {
+                this.setPageList(data.result)
+            }
+        })
     }
 
 }
