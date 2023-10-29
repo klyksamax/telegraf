@@ -1,4 +1,3 @@
-
 const ResultType = {
     JSON: "JSON",
     BINARY: "BINARY",
@@ -96,14 +95,15 @@ class Api {
         }
     }
 
+    // Через fetch не работает, решил просто через url пердавать !!!
+
     getToken(args) {
-        //https://api.telegra.ph/createAccount?short_name=Maksim&author_name=Holiday
         const url = this.backendUrl + `createAccount?short_name=${args.body.short_name}&author_name=${args.body.author_name}`;
         const body = {
             method: "POST",
             // body: JSON.stringify({
-            //     short_name: "Maksim",
-            //     author_name: "Maksim"
+            //     short_name: args.body.short_name,
+            //     author_name: args.body.author_name
             // })
         };
         return this._fetchData(url, body, args);
@@ -114,8 +114,7 @@ class Api {
         const body = {
             method: "GET",
             // body: JSON.stringify({
-            //     access_token : "",
-            //     
+            //     access_token : args.body,   
             // })
         };
         return this._fetchData(url, body, args);
