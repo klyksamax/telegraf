@@ -1,0 +1,16 @@
+.card-page__block{
+    display: flex;
+    flex-direction: column;
+    min-height: 100px;
+    align-items: flex-start;
+    width: 300px;
+    border: 2px solid #b5b5b5;
+    justify-content: center;
+    padding: 25px;
+    border-radius: 20px 0px 20px 20px;
+    background-color: white;
+}
+
+.card-page__block:hover{
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}

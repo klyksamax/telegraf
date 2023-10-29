@@ -1,0 +1,5 @@
+.collection-pages_block{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

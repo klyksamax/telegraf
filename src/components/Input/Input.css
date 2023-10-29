@@ -1,0 +1,18 @@
+.form-control__label {
+    margin: 10px 20px 10px 20px;
+    position: relative;
+    
+  }
+
+.form-control__input{
+    width: 60%;
+    height: 30px;
+    border: 1px solid #0000004a;
+    border-radius: 5px;
+    padding: 0px 0px 0px 10px;
+    outline:none;
+}
+
+.form-control__input:focus{
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}

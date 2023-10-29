@@ -11,3 +11,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+h1, h2, h3, h4 {
+  margin: 0px;
+  padding: 0px;
+}
+
+p {
+  margin: 0px;
+  padding: 0px;
+}
+
+@import url(./components/Content/Content.css);
+@import url(./components/Header/Header.css);
+@import url(./components/CollectionPages/CollectionPages.css);
+@import url(./components/Profile/Profile.css);
+@import url(./components/Input/Input.css);
+@import url(./components/ButtonIcon/ButtonIcon.css);
+@import url(./components/CardPage/CardPage.css);

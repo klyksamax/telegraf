@@ -1,25 +1,42 @@
-import logo from './logo.svg';
+import { createContext, useEffect } from 'react';
 import './App.css';
+import { observer } from "mobx-react-lite";
+import { Route, Routes } from 'react-router-dom';
+import Content from './components/Content/Content';
+import Header from './components/Header/Header';
+import { api } from './utils/api';
+import { appStore } from './store/AppStore';
+const AppContext = createContext(appStore);
 
-function App() {
+const App = observer(() => {
+
+  // useEffect(() => {
+  //   api.getSlides({
+  //     resolveCallback: (data) => {
+  //       console.log(data)
+  //     },
+  //   });
+  // }, []);
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContext.Provider value={""}>
+      <div className="App">
+        <header>
+          <Header appStore={""} />
+        </header>
+        <main>
+          <Routes>
+            <Route
+              path='/'
+              element={<Content appstore={""} />} />
+          </Routes>
+        </main>
+      </div>
+    </AppContext.Provider>
   );
-}
+
+
+})
 
 export default App;

@@ -1,0 +1,24 @@
+.content__container{
+    display: grid;
+    grid-template-columns: 1fr 5px 1fr;
+    margin: 0px 0px 0px 0px;
+}
+
+.collection-pages__container{
+    display: flex;
+    height: 700px;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile__containe{
+    display: flex;
+    height: 700px;
+    align-items: center;
+    justify-content: center;
+}
+
+.content-separator{
+    height: 100%;
+    background-color: black;
+}
