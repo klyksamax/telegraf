@@ -96,6 +96,7 @@ class Api {
     }
 
     // Через fetch не работает, решил просто через url пердавать !!!
+    // Можно через Axios, но решил не применять данный стек в данном проекте
 
     getToken(args) {
         const url = this.backendUrl + `createAccount?short_name=${args.body.short_name}&author_name=${args.body.author_name}`;
