@@ -11,7 +11,7 @@ const Content = observer(({ appStore }) => {
             </div>
             <div className="content-separator"></div>
             <div className="profile__containe">
-                <Profile />
+                <Profile appStore={appStore}/>
             </div>
         </div>
     );

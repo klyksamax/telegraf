@@ -1,33 +1,49 @@
 import { observer } from "mobx-react-lite";
-import { profile } from "../const";
-import Input from "../Input/Input";
-import { getListInputProfile } from "../../utils/basic";
-import { useEffect, useState } from "react";
+import { getListInputProfile, getObjectRegister } from "../../utils/basic";
+import { useEffect } from "react";
 import ButtonIcon from "../ButtonIcon/ButtonIcon";
 import { api } from "../../utils/api";
+import Input from "../Input/Input";
 
 const Profile = observer(({ appStore }) => {
 
-    const [profileList, setProfileList] = useState(getListInputProfile(profile))
-
     useEffect(() => {
-        setProfileList(getListInputProfile(profile))
-    }, [])
+        getListInputProfile(appStore)
+    }, [appStore])
 
-    const test = () => {
-        api.getAccount({
-            resolveCallback: (data) => {
-                console.log(data)
+    const onChangeInput = (element) =>{
+        appStore.inputProfile.reduce((acc, el) => {
+                 if (el.id === element.id) {
+                     appStore.setInputProfile([...acc, { ...element }])
+                   return [...acc, { ...element }];
+                 }
+                     appStore.setInputProfile([...acc, el])
+                   return [...acc, el];
+               }, []);
+         }
+
+    const editForm = () => {
+        api.editAccountInfo({
+            body:{
+                profole: getObjectRegister(appStore.inputProfile),
+                token: appStore.token
             },
-        });
+            resolveCallback: (data) => {
+                appStore.setProfile(data.result)
+            }
+        })
     }
 
     return (
         <div className="profile__block">
             <div></div>
             <div className="profile__block-input">
-                {profileList.map((el, i) => {
-                    return <Input key={i} element={el} />
+                {appStore.inputProfile.map((el, i) => {
+                    return <Input
+                    key={i} 
+                    element={el} 
+                    onChangeInput={onChangeInput}
+                     />
                 })}
             </div>
             <ButtonIcon
@@ -35,7 +51,7 @@ const Profile = observer(({ appStore }) => {
                 text={"Изменить"}
                 btnSelector="buttonIcon__change"
                 size={"LARGE"}
-                onClick={test}
+                onClick={editForm}
             />
         </div>
     );

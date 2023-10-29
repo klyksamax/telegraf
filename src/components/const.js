@@ -1,4 +1,10 @@
 
+export const titleProfile = {
+    SHORT_NAME: "Краткое имя",
+    AUTHOR_NAME: "Имя автора",
+    AUTHOR_URL: "Ссылка автора"
+}
+
 export const profile = [
     {
         id: 1,
@@ -25,5 +31,24 @@ export const page = [
         title: "Ну нет",
         description: "Ну нет мир",
         date: "21.09.23"
+    },
+]
+
+export const login = [
+    [
+        "Введите свой токен", ""
+    ]
+]
+
+export const registration = [
+    {
+        id: 1,
+        title: "Введите свое имя",
+        value: ""
+    },
+    {
+        id: 2,
+        title: "Введите свое полное имя",
+        value: ""
     },
 ]

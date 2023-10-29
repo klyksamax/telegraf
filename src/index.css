@@ -29,3 +29,7 @@ p {
 @import url(./components/Input/Input.css);
 @import url(./components/ButtonIcon/ButtonIcon.css);
 @import url(./components/CardPage/CardPage.css);
+@import url(./components/LoginPage/LoginPage.css);
+@import url(./components/PopupModal/PopupModal.css);
+@import url(./components/Аuthorization/Аuthorization.css);
+@import url(./components/Registration/Registration.css);

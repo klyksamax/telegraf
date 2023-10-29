@@ -9,7 +9,7 @@ export const ABORT_ERROR = "AbortError";
 const NOT_AUTH_STATUS = 401;
 
 class Api {
-    backendUrl = "https://api.telegra.ph/createAccount";
+    backendUrl = "https://api.telegra.ph/";
 
     constructor(options) {
         this._options = options;
@@ -19,11 +19,11 @@ class Api {
         // console.log(url)
         return fetch(url, requestBody)
             .then((response) => {
-                console.log(response)
+                
                 return this._processResponse(response, resultType);
             })
             .then((result) => {
-                console.log(result)
+              
                 args?.resolveCallback?.(result);
                 return result;
             })
@@ -97,16 +97,35 @@ class Api {
         }
     }
 
-    getAccount(args) {
-        const headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-        const url = this.backendUrl;//sdfaasdfasdf
+    getToken(args) {
+        //https://api.telegra.ph/createAccount?short_name=Maksim&author_name=Holiday
+        const url = this.backendUrl + `createAccount?short_name=${args.body.short_name}&author_name=${args.body.author_name}`;
         const body = {
             method: "POST",
-            body: JSON.stringify({
-                short_name: "Maksim",
-                author_name: "Maksim Holiday"
-            })
+            // body: JSON.stringify({
+            //     short_name: "Maksim",
+            //     author_name: "Maksim"
+            // })
+        };
+        return this._fetchData(url, body, args);
+    }
+
+    getAccount(args) {
+        const url = this.backendUrl + `getAccountInfo?access_token=${args.body}`;
+        const body = {
+            method: "GET",
+            // body: JSON.stringify({
+            //     access_token : "",
+            //     
+            // })
+        };
+        return this._fetchData(url, body, args);
+    }
+
+    editAccountInfo(args) {
+        const url = this.backendUrl + `editAccountInfo?access_token=${args.body.token}&short_name=${args.body.profole.short_name}&author_name=${args.body.profole.author_name}&author_url=${args.body.profole.author_url}`;
+        const body = {
+            method: "POST",
         };
         return this._fetchData(url, body, args);
     }

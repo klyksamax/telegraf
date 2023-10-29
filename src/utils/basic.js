@@ -1,10 +1,21 @@
-export const getListInputProfile = (profile) => {
+import { titleProfile } from "../components/const"
 
-    const map = profile.map((el) => {
-        return new Map(Object.entries(el));
-    })
-    const arr = Array.from(map[0])
+export const getListInputProfile = (appStore) => {
+    const arr = []
+    for (let key in appStore.profile) {
+        arr.push({
+            id: key,
+            title: getTitleProfile(key),
+            value: appStore.profile[key]
+        })     
+      }
+   appStore.setInputProfile(arr)
     return arr
+
+}
+
+export function getTitleProfile (title) {
+    return titleProfile[title.toUpperCase()]
 }
 
 function S4() {
@@ -12,4 +23,17 @@ function S4() {
 }
 export function guid() {
     return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
+}
+
+export function getObjectRegister(arr) {
+    const obj = arr.reduce(
+        (acc, object) => {
+          const id = object.id;
+          acc[id] ??= "";
+          acc[id] = object.value;
+          return acc;
+        },
+        {},
+      );
+      return obj
 }

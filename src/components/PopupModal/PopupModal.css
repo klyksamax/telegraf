@@ -1,0 +1,217 @@
+.popup__modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 12;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.25);
+    animation-name: appear;
+    animation-duration: 300ms;
+  }
+  
+  .popup__modal-dialog {
+    background: #ffffff;
+    box-shadow: 0px 12px 32px rgba(0, 0, 0, 0.18);
+    border-radius: 12px;
+    max-width: 1136px;
+    max-height: 700px;
+    height: auto;
+    position: relative;
+    margin: 0 20px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: slide-in;
+    animation-duration: 0.5s;
+  }
+  
+  .popup__modal-header_title {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin: 0px 0px 0px 0px;
+  }
+  
+  .popup__modal-header_content {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .popup__modal-header {
+    padding: 10px 0px 0px 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .popup__modal-footer {
+    padding: 11px 23px 15px 23px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  .popup__modal-footer-button_blue {
+    width: 105px;
+    height: 24px;
+    color: #0d4cd3;
+    text-align: right;
+    border: 0px;
+    background-color: white;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+  }
+  
+  .popup__modal-footer-button_red {
+    width: 100px;
+    height: 24px;
+    margin-left: 25px;
+    color: #ee3f58;
+    text-align: right;
+    border: 0px;
+    background-color: white;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+  }
+  
+  .popup__modal-footer-button_blue:active {
+    font-weight: 900;
+  }
+  
+  .popup__modal-footer-button_red:active {
+    font-weight: 900;
+  }
+  
+  .popup__modal-title-close {
+    display: flex;
+    cursor: pointer;
+    position: absolute;
+    right: 16px;
+    top: 20px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  
+  .popup__modal-body {
+    overflow: auto;
+  }
+  
+  .popup__modal-body-content_text {
+    padding: 23px 23px 23px 23px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 10px;
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    color: #323131;
+    justify-content: center;
+  }
+  
+  .popup__modal-body-content_object {
+    padding: 23px 23px 23px 23px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 10px;
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    color: #323131;
+    justify-content: flex-start;
+    min-height: 200px;
+  }
+  
+  .popup__modal-title {
+    margin: 0px 0px 0px 0px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    min-height: 50px;
+    color: black;
+  }
+  
+  .popup__button-action {
+    border: 0px;
+    background-color: white;
+  }
+  
+  @keyframes appear {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slide-in {
+    from {
+      transform: translateY(-150px);
+    }
+  
+    to {
+      transform: translateY(0);
+    }
+  }
+  
+  .popup_sm {
+    width: 360px;
+  }
+  
+  .popup_md {
+    width: 560px;
+  }
+  
+  .popup_lg {
+    width: 760px;
+  }
+  
+  .popup_xl {
+    width: 980px;
+  }
+  
+  @media (min-width: 1300px) {
+    .popup_xl {
+      display: flex;
+      flex: 0 0 auto;
+      height: auto;
+      max-height: 810px;
+      justify-content: flex-end;
+      gap: 20px;
+    }
+  }
+  
+  @media (max-width: 1070px) {
+    .popup_xl {
+      width: 807px;
+      max-height: 603px;
+    }
+  }
+  
+  @media (max-height: 820px) {
+    .popup_xl {
+      max-height: 500px;
+    }
+  }
+  
